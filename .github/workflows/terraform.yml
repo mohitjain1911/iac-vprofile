@@ -39,6 +39,14 @@ jobs:
          with:
            terraform_version: 1.6.3
 
+       - name: Debug AWS Credentials
+         run: |
+           echo "AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID"
+           echo "AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY"
+           echo "BUCKET_TF_STATE: $BUCKET_TF_STATE"
+           echo "AWS_REGION: $AWS_REGION"
+           echo "EKS_CLUSTER: $EKS_CLUSTER"
+
        - name: Terraform init
          id: init
          run: terraform init -backend-config="bucket=$BUCKET_TF_STATE"
